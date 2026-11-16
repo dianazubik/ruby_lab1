@@ -1,11 +1,8 @@
-<% content_for :title, "New user" %>
 
-<h1>New user</h1>
+<% content_for :title, "Створити користувача" %>
 
-<%= render "form", user: @user %>
+<div class="container py-5">
+  <h1 class="mb-4">Створити користувача</h1>
 
-<br>
-
-<div>
-  <%= link_to "Back to users", users_path %>
+  <%= render "form", user: @user %>
 </div>

@@ -1,0 +1,12 @@
+<% content_for :title, "Editing conference session" %>
+
+<h1>Editing conference session</h1>
+
+<%= render "form", conference_session: @conference_session %>
+
+<br>
+
+<div>
+  <%= link_to "Show this conference session", @conference_session %> |
+  <%= link_to "Back to conference sessions", conference_sessions_path %>
+</div>

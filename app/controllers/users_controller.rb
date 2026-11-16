@@ -8,6 +8,7 @@ class UsersController < ApplicationController
 
   # GET /users/1 or /users/1.json
   def show
+  @conference_sessions = @user.conference_sessions
   end
 
   # GET /users/new
@@ -56,6 +57,15 @@ class UsersController < ApplicationController
       format.json { head :no_content }
     end
   end
+# DELETE /users/destroy_all
+def destroy_all
+  User.destroy_all
+
+  redirect_to users_path,
+              notice: "Усі користувачі успішно видалені.",
+              status: :see_other
+end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -65,6 +75,6 @@ class UsersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def user_params
-      params.expect(user: [ :name, :email ])
+  params.expect(user: [ :name, :email, :password, :password_confirmation ])
     end
 end

@@ -1,0 +1,177 @@
+
+<div class="container-fluid p-0">
+
+  
+
+  <!-- Header із таймером -->
+  <header class="bg-primary text-white text-center py-5">
+    <div class="container">
+      <h1 class="display-3 fw-bold">IT Conference 2026</h1>
+      <p class="lead">
+        Конференція сучасних технологій, інновацій та програмування
+      </p>
+
+      <h3 class="mt-4">До початку конференції залишилося:</h3>
+
+      <div class="d-flex justify-content-center gap-3 mt-3 flex-wrap">
+        <div class="bg-dark rounded p-3">
+          <h2 id="countdown-days">00</h2>
+          <span>Днів</span>
+        </div>
+        <div class="bg-dark rounded p-3">
+          <h2 id="countdown-hours">00</h2>
+          <span>Годин</span>
+        </div>
+        <div class="bg-dark rounded p-3">
+          <h2 id="countdown-minutes">00</h2>
+          <span>Хвилин</span>
+        </div>
+        <div class="bg-dark rounded p-3">
+          <h2 id="countdown-seconds">00</h2>
+          <span>Секунд</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  
+
+  <!-- Дні конференції -->
+  <section id="days" class="container py-5">
+    <h2 class="text-center mb-4">Дні конференції</h2>
+
+    <ul class="nav nav-tabs justify-content-center" id="conferenceTabs">
+      <li class="nav-item">
+        <button class="nav-link active" data-bs-toggle="tab"
+                data-bs-target="#day1" type="button">
+          День 1
+        </button>
+      </li>
+      <li class="nav-item">
+        <button class="nav-link" data-bs-toggle="tab"
+                data-bs-target="#day2" type="button">
+          День 2
+        </button>
+      </li>
+    </ul>
+
+    <div class="tab-content border border-top-0 p-4">
+      <div class="tab-pane fade show active" id="day1">
+        <h4>Перший день — технології та розробка</h4>
+        <p>Доповіді про веброзробку, програмування та сучасні технології.</p>
+      </div>
+
+      <div class="tab-pane fade" id="day2">
+        <h4>Другий день — інновації та майбутнє IT</h4>
+        <p>Обговорення штучного інтелекту, кібербезпеки та нових рішень.</p>
+      </div>
+    </div>
+  </section>
+
+  
+<!-- Тематичні треки -->
+<section id="tracks" class="container py-5">
+
+  <h2 class="text-center mb-4">Тематичні треки</h2>
+
+  <ul class="nav nav-tabs justify-content-center" id="trackTabs">
+    <li class="nav-item">
+      <button class="nav-link active"
+              data-bs-toggle="tab"
+              data-bs-target="#frontend"
+              type="button">
+        Frontend
+      </button>
+    </li>
+
+    <li class="nav-item">
+      <button class="nav-link"
+              data-bs-toggle="tab"
+              data-bs-target="#backend"
+              type="button">
+        Backend
+      </button>
+    </li>
+
+    <li class="nav-item">
+      <button class="nav-link"
+              data-bs-toggle="tab"
+              data-bs-target="#ai"
+              type="button">
+        AI
+      </button>
+    </li>
+
+    <li class="nav-item">
+      <button class="nav-link"
+              data-bs-toggle="tab"
+              data-bs-target="#cybersecurity"
+              type="button">
+        Cybersecurity
+      </button>
+    </li>
+  </ul>
+
+  <div class="tab-content border border-top-0 p-4">
+
+    <div class="tab-pane fade show active" id="frontend">
+      <h4>Frontend Development</h4>
+      <p>Розробка користувацьких інтерфейсів, HTML, CSS, JavaScript та сучасні вебтехнології.</p>
+    </div>
+
+    <div class="tab-pane fade" id="backend">
+      <h4>Backend Development</h4>
+      <p>Серверна розробка, бази даних, API та архітектура вебзастосунків.</p>
+    </div>
+
+    <div class="tab-pane fade" id="ai">
+      <h4>Artificial Intelligence</h4>
+      <p>Штучний інтелект, машинне навчання та автоматизація процесів.</p>
+    </div>
+
+    <div class="tab-pane fade" id="cybersecurity">
+      <h4>Cybersecurity</h4>
+      <p>Захист інформації, безпека мереж та протидія кіберзагрозам.</p>
+    </div>
+
+  </div>
+
+</section>
+
+
+ 
+
+</div>
+
+<script>
+  // Дата початку конференції — демонстраційна
+  const conferenceDate = new Date("2026-12-01T10:00:00");
+
+  function updateCountdown() {
+    const now = new Date();
+    const difference = conferenceDate - now;
+
+    if (difference <= 0) {
+      document.getElementById("countdown-days").textContent = "00";
+      document.getElementById("countdown-hours").textContent = "00";
+      document.getElementById("countdown-minutes").textContent = "00";
+      document.getElementById("countdown-seconds").textContent = "00";
+      return;
+    }
+
+    document.getElementById("countdown-days").textContent =
+      Math.floor(difference / (1000 * 60 * 60 * 24));
+
+    document.getElementById("countdown-hours").textContent =
+      Math.floor((difference / (1000 * 60 * 60)) % 24);
+
+    document.getElementById("countdown-minutes").textContent =
+      Math.floor((difference / (1000 * 60)) % 60);
+
+    document.getElementById("countdown-seconds").textContent =
+      Math.floor((difference / 1000) % 60);
+  }
+
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+</script>

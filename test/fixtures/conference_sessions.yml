@@ -1,0 +1,13 @@
+one:
+  title: Виступ про штучний інтелект
+  description: Огляд сучасних можливостей використання штучного інтелекту.
+  track: Artificial Intelligence
+  conference_day: 1
+  user: one
+
+two:
+  title: Виступ про кібербезпеку
+  description: Основи захисту інформації та безпечної роботи в мережі.
+  track: Cybersecurity
+  conference_day: 2
+  user: two

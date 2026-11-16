@@ -1,0 +1,75 @@
+
+<% content_for :title, "Виступи конференції" %>
+
+<div class="container py-5">
+
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h1>Виступи конференції</h1>
+
+    <%= link_to "Додати виступ", new_conference_session_path,
+        class: "btn btn-dark" %>
+  </div>
+
+  <% if @conference_sessions.any? %>
+
+    <div class="row g-4">
+      <% @conference_sessions.each do |conference_session| %>
+
+        <div class="col-md-6 col-lg-4">
+          <div class="card h-100 shadow-sm border-0">
+
+            <% if conference_session.image.attached? %>
+              <%= image_tag conference_session.image,
+                  class: "card-img-top",
+                  style: "height: 220px; object-fit: cover;" %>
+            <% end %>
+
+            <div class="card-body">
+
+              <h5 class="card-title">
+                <%= conference_session.title %>
+              </h5>
+
+              <p class="text-muted mb-2">
+                Автор: <%= conference_session.user.name %>
+              </p>
+
+              <p class="card-text">
+                <%= truncate(conference_session.description, length: 100) %>
+              </p>
+
+              <p class="small text-secondary mb-3">
+                Тематичний трек: <%= conference_session.track %><br>
+                День конференції: <%= conference_session.conference_day %>
+              </p>
+
+              <%= link_to "Переглянути",
+                  conference_session_path(conference_session),
+                  class: "btn btn-outline-dark btn-sm" %>
+
+              <%= link_to "Редагувати",
+                  edit_conference_session_path(conference_session),
+                  class: "btn btn-outline-primary btn-sm" %>
+
+              <%= button_to "Видалити",
+                  conference_session_path(conference_session),
+                  method: :delete,
+                  class: "btn btn-outline-danger btn-sm mt-2",
+                  form: { data: { turbo_confirm: "Видалити цей виступ?" } } %>
+
+            </div>
+          </div>
+        </div>
+
+      <% end %>
+    </div>
+
+  <% else %>
+
+    <div class="alert alert-info">
+      Поки що виступів немає. Створіть перший запис!
+    </div>
+
+  <% end %>
+
+</div>

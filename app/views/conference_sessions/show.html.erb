@@ -1,0 +1,74 @@
+
+<% content_for :title, @conference_session.title %>
+
+<div class="container py-5">
+
+  <% if notice.present? %>
+    <div class="alert alert-success alert-dismissible fade show">
+      <%= notice %>
+      <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+  <% end %>
+
+  <div class="row justify-content-center">
+    <div class="col-lg-8">
+
+      <div class="card shadow-sm border-0">
+
+        <% if @conference_session.image.attached? %>
+          <%= image_tag @conference_session.image,
+              class: "card-img-top",
+              style: "max-height: 400px; object-fit: cover;" %>
+        <% end %>
+
+        <div class="card-body p-4">
+
+          <h1 class="mb-3">
+            <%= @conference_session.title %>
+          </h1>
+
+          <p class="text-muted">
+            Автор: <%= @conference_session.user.name %>
+          </p>
+
+          <hr>
+
+          <h5>Опис виступу</h5>
+          <p><%= @conference_session.description %></p>
+
+          <p>
+            <strong>Тематичний трек:</strong>
+            <%= @conference_session.track %>
+          </p>
+
+          <p>
+            <strong>День конференції:</strong>
+            <%= @conference_session.conference_day %>
+          </p>
+
+          <hr>
+
+          <div class="d-flex flex-wrap gap-2">
+
+            <%= link_to "Редагувати",
+                edit_conference_session_path(@conference_session),
+                class: "btn btn-dark" %>
+
+            <%= link_to "До списку виступів",
+                conference_sessions_path,
+                class: "btn btn-outline-secondary" %>
+
+            <%= button_to "Видалити",
+                conference_session_path(@conference_session),
+                method: :delete,
+                class: "btn btn-outline-danger",
+                form: { data: { turbo_confirm: "Видалити цей виступ?" } } %>
+
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

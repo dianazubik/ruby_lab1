@@ -1,0 +1,48 @@
+
+<div class="container py-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6 col-lg-5">
+
+      <div class="card shadow-sm border-0">
+        <div class="card-body p-4">
+
+          <h2 class="text-center mb-4">Вхід до системи</h2>
+
+          <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+
+            <div class="mb-3">
+              <%= f.label :email, "Електронна пошта", class: "form-label" %>
+              <%= f.email_field :email, autofocus: true,
+                  autocomplete: "email", class: "form-control" %>
+            </div>
+
+            <div class="mb-3">
+              <%= f.label :password, "Пароль", class: "form-label" %>
+              <%= f.password_field :password,
+                  autocomplete: "current-password", class: "form-control" %>
+            </div>
+
+            <% if devise_mapping.rememberable? %>
+              <div class="form-check mb-4">
+                <%= f.check_box :remember_me, class: "form-check-input" %>
+                <%= f.label :remember_me, "Запам'ятати мене",
+                    class: "form-check-label" %>
+              </div>
+            <% end %>
+
+            <div class="d-grid">
+              <%= f.submit "Увійти", class: "btn btn-dark" %>
+            </div>
+
+          <% end %>
+
+          <div class="text-center mt-3">
+            <%= render "devise/shared/links" %>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

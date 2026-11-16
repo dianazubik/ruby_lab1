@@ -1,0 +1,11 @@
+<% content_for :title, "New conference session" %>
+
+<h1>New conference session</h1>
+
+<%= render "form", conference_session: @conference_session %>
+
+<br>
+
+<div>
+  <%= link_to "Back to conference sessions", conference_sessions_path %>
+</div>
